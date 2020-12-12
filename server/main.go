@@ -30,8 +30,6 @@ func main() {
 
 	flag.Parse()
 
-	allSuites := allQuestionSuites()
-
 	e := echo.New()
 
 	e.Use(middleware.Logger())
@@ -40,7 +38,7 @@ func main() {
 	e.Use(middleware.CORS())
 
 	e.GET("/qs", func(c echo.Context) error {
-		return c.JSON(200, allSuites)
+		return c.JSON(200, allQuestionSuites())
 	})
 
 	e.GET("/qs/:name/random", func(c echo.Context) error {
